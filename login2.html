@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>صفحة تسجيل الدخول</title>
+  <style>
+  /* تصفيف عام */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    direction: rtl;
+    color: #333;
+}
+
+/* صندوق تسجيل الدخول */
+.login-container {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+    width: 350px;
+    text-align: center;
+}
+
+/* عنوان */
+.login-form h2 {
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: #5a4bcf;
+}
+
+/* مجموعات الادخال */
+.input-group {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+/* التسميات */
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* حقول الإدخال */
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1.5px solid #ccc;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+}
+
+/* تغيير لون الحدود عند التركيز */
+.input-group input:focus {
+    border-color: #5a4bcf;
+    outline: none;
+}
+
+/* زر الدخول */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #5a4bcf;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #483d8b;
+}
+
+/* رسائل الخطأ */
+.error-message {
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 5px;
+    display: none;
+}
+  </style>
+</head>
+<body>
+    <div class="login-container">
+        <form class="login-form" id="loginForm" novalidate>
+            <h2>تسجيل الدخول</h2>
+            <div class="input-group">
+                <label for="username">اسم المستخدم</label>
+                <input type="text" id="username" name="username" placeholder="أدخل اسم المستخدم" required />
+                <small class="error-message"></small>
+            </div>
+            <div class="input-group">
+                <label for="password">كلمة المرور</label>
+                <input type="password" id="password" name="password" placeholder="أدخل كلمة المرور" required />
+                <small class="error-message"></small>
+            </div>
+            <button type="submit">دخول</button>
+        </form>
+    </div>
+
+    <script >
+  const form = document.getElementById("loginForm");
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // مسح الرسائل السابقة
+    clearErrors();
+
+    let isValid = true;
+
+    const username = form.username.value.trim();
+    const password = form.password.value.trim();
+
+    if (username === "") {
+        showError("username", "الرجاء إدخال اسم المستخدم");
+        isValid = false;
+    }
+
+    if (password === "") {
+        showError("password", "الرجاء إدخال كلمة المرور");
+        isValid = false;
+    } else if (password.length < 6) {
+        showError("password", "كلمة المرور يجب أن تكون 6 أحرف على الأقل");
+        isValid = false;
+    }
+
+    if (isValid) {
+        alert("تم التحقق بنجاح! يمكنك تنفيذ عملية تسجيل الدخول هنا.");
+        form.reset();
+    }
+});
+
+function showError(fieldId, message) {
+    const inputGroup = document.getElementById(fieldId).parentElement;
+    const error = inputGroup.querySelector(".error-message");
+    error.innerText = message;
+    error.style.display = "block";
+}
+
+function clearErrors() {
+    const errors = document.querySelectorAll(".error-message");
+    errors.forEach((el) => {
+        el.innerText = "";
+        el.style.display = "none";
+    });
+}
+  </script>
+</body>
+</html>
