@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magical Login</title>
+  <style>
+  /* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  overflow: hidden;
+}
+
+/* Magical background animation */
+body::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, #ff00cc, #333399, #00f0ff, #ff00cc);
+  animation: rotate 12s linear infinite;
+  z-index: -1;
+  filter: blur(100px);
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Login box */
+.container {
+  position: relative;
+  width: 350px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+}
+
+.login-box h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #fff;
+  text-shadow: 0 0 10px #00f0ff;
+}
+
+.input-box {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 12px 10px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-box label {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ccc;
+  font-size: 14px;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+  top: -5px;
+  font-size: 12px;
+  color: #00f0ff;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #00f0ff, #ff00cc);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.btn:hover {
+  background: linear-gradient(90deg, #ff00cc, #00f0ff);
+  box-shadow: 0 0 15px #00f0ff;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="login-box">
+      <h2>Magical Login</h2>
+      <form>
+        <div class="input-box">
+          <input type="text" required />
+          <label>Username</label>
+        </div>
+        <div class="input-box">
+          <input type="password" required />
+          <label>Password</label>
+          <span class="toggle-password">👁️</span>
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+    </div>
+  </div>
+  <script>
+  // Toggle password visibility
+const togglePassword = document.querySelector(".toggle-password");
+const passwordInput = document.querySelector("input[type='password']");
+
+togglePassword.addEventListener("click", () => {
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    togglePassword.textContent = "🙈";
+  } else {
+    passwordInput.type = "password";
+    togglePassword.textContent = "👁️";
+  }
+});
+  </script>
+</body>
+</html>
