@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>تسجيل الدخول</title>
+  <style>
+  /* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.login-card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-card h2 {
+  font-size: 22px;
+  color: #333;
+}
+
+.login-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+.login-card label {
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border 0.3s ease;
+}
+
+.login-card input:focus {
+  border-color: #6366f1;
+  outline: none;
+}
+
+.login-card button {
+  padding: 12px;
+  background-color: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-card button:hover {
+  background-color: #4f46e5;
+}
+  </style>
+</head>
+<body>
+  <div class="login-wrapper">
+    <div class="login-card">
+      <h2>👋 مرحبًا بعودتك</h2>
+      <p>الرجاء تسجيل الدخول للوصول إلى حسابك</p>
+      <form>
+        <label for="username">البريد الإلكتروني أو اسم المستخدم</label>
+        <input type="text" id="username" placeholder="مثال: name@example.com" required>
+
+        <label for="password">كلمة المرور</label>
+        <input type="password" id="password" placeholder="********" required>
+
+        <button type="submit">تسجيل الدخول</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
